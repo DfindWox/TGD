@@ -1,0 +1,12 @@
+res://cenes/player.tscn
+res://main.tscn
+res://cenes/apple.tscn
+res://cenes/maps/map.tscn
+res://classes/base_entity.gd
+res://classes/base_entity.tscn
+res://classes/base_enemy.gd
+res://classes/base_enemy.tscn
+res://cenes/enemies/woody.gd
+res://cenes/enemies/woody.tscn
+res://cenes/bullet.gd
+res://cenes/bullet.tscn

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://do5edktw5kw7f"]
+
+[ext_resource type="PackedScene" uid="uid://dysexsuiwt2me" path="res://classes/base_entity.tscn" id="1_bf0rw"]
+[ext_resource type="Script" path="res://classes/base_enemy.gd" id="2_4ytxu"]
+[ext_resource type="PackedScene" uid="uid://ceh0wgpgda8f3" path="res://classes/radar.tscn" id="2_wmcqx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lapx5"]
+radius = 9.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdx63"]
+size = Vector2(13, 5.12979)
+
+[node name="BaseEnemy" instance=ExtResource("1_bf0rw")]
+collision_layer = 8
+script = ExtResource("2_4ytxu")
+
+[node name="Radar" parent="." index="0" instance=ExtResource("2_wmcqx")]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionVision" type="CollisionPolygon2D" parent="Radar" index="1"]
+position = Vector2(9, 0)
+rotation = -0.00974127
+scale = Vector2(1.79165, 0.601099)
+polygon = PackedVector2Array(-1.33172, 0.545398, 62.4819, -24.5866, 62.4819, 14.5076)
+
+[node name="Collision" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_lapx5")
+
+[node name="hurtbox" parent="." index="5" instance=ExtResource("2_wmcqx")]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionHurt" type="CollisionShape2D" parent="hurtbox" index="1"]
+position = Vector2(0, -7.36098)
+scale = Vector2(0.916021, -0.639021)
+shape = SubResource("RectangleShape2D_sdx63")
+debug_color = Color(0.32549, 0.623529, 0.141176, 0.419608)
+
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

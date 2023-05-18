@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0avvfjh7n74i"]
+
+[ext_resource type="PackedScene" uid="uid://bteqxsno8ws6h" path="res://cenes/player.tscn" id="1_js1qi"]
+[ext_resource type="PackedScene" uid="uid://c3t4c5usw8ewa" path="res://cenes/maps/map.tscn" id="2_8bt1j"]
+[ext_resource type="PackedScene" uid="uid://c113yufcp2jkf" path="res://cenes/apple.tscn" id="3_1jj07"]
+[ext_resource type="PackedScene" uid="uid://bykjww0q0dnuq" path="res://cenes/enemies/woody.tscn" id="4_rbyd6"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_js1qi")]
+position = Vector2(105, 83)
+
+[node name="Map" parent="." instance=ExtResource("2_8bt1j")]
+position = Vector2(14, 254)
+
+[node name="Fruit" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(306, 132)
+rotation = -0.236993
+
+[node name="Woody" parent="." instance=ExtResource("4_rbyd6")]
+position = Vector2(24, 172)

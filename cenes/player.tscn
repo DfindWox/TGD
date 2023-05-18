@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bteqxsno8ws6h"]
+
+[ext_resource type="PackedScene" uid="uid://dysexsuiwt2me" path="res://classes/base_entity.tscn" id="1_flcby"]
+[ext_resource type="Script" path="res://cenes/player.gd" id="2_fwq2q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2fgon"]
+radius = 14.0
+height = 44.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lguxy"]
+size = Vector2(18, 3)
+
+[node name="Player" groups=["Player"] instance=ExtResource("1_flcby")]
+collision_layer = 4
+script = ExtResource("2_fwq2q")
+jump_speed = -150
+speed = 10000
+
+[node name="Collision" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_2fgon")
+
+[node name="Sprite" parent="." index="1"]
+scale = Vector2(33, 30)
+
+[node name="TimerJump" type="Timer" parent="." index="4"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Tact" type="Area2D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 3
+
+[node name="Collision" type="CollisionShape2D" parent="Tact" index="0"]
+position = Vector2(0, 22.5)
+shape = SubResource("RectangleShape2D_lguxy")
+
+[connection signal="timeout" from="TimerJump" to="." method="_on_timer_jump_timeout"]
+[connection signal="body_entered" from="Tact" to="." method="_on_tact_body_entered"]
+[connection signal="body_exited" from="Tact" to="." method="_on_tact_body_exited"]

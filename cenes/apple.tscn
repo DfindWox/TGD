@@ -1,0 +1,140 @@
+[gd_scene load_steps=10 format=3 uid="uid://c113yufcp2jkf"]
+
+[ext_resource type="PackedScene" uid="uid://ceh0wgpgda8f3" path="res://classes/radar.tscn" id="1_enjpx"]
+[ext_resource type="Texture2D" uid="uid://10spgrsvom75" path="res://assets/Pixel Adventure 1, 2/Items/Fruits/Apple.png" id="2_2bgk6"]
+[ext_resource type="Script" path="res://cenes/apple.gd" id="2_bj1ib"]
+[ext_resource type="Texture2D" uid="uid://bf1gbbj1nx7c6" path="res://assets/Pixel Adventure 1, 2/Items/Fruits/Collected.png" id="3_r6pr6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_so3hf"]
+radius = 7.0
+
+[sub_resource type="Animation" id="Animation_jdtup"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collected:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Apple:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Apple:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o0w38"]
+resource_name = "collected"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collected:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collected:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Apple:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sbtbu"]
+resource_name = "idle"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Apple:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ueos"]
+_data = {
+"RESET": SubResource("Animation_jdtup"),
+"collected": SubResource("Animation_o0w38"),
+"idle": SubResource("Animation_sbtbu")
+}
+
+[node name="Fruit" instance=ExtResource("1_enjpx")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_bj1ib")
+
+[node name="Collision" parent="." index="0"]
+shape = SubResource("CircleShape2D_so3hf")
+
+[node name="Apple" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_2bgk6")
+hframes = 17
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_2ueos")
+}
+
+[node name="Collected" type="Sprite2D" parent="." index="3"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_r6pr6")
+hframes = 6
+frame = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

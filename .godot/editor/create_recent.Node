@@ -1,0 +1,10 @@
+Timer
+Marker2D
+CollisionPolygon2D
+CollisionShape2D
+Sprite2D
+AnimationPlayer
+AnimationTree
+Area2D
+TileMap
+CharacterBody2D
