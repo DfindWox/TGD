@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://cenes/bullet.gd" id="2_nnrwl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4trt3"]
+radius = 6.32456
 
 [node name="Seed" instance=ExtResource("1_2k5j7")]
 collision_layer = 0

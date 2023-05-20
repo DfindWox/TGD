@@ -10,5 +10,3 @@ script = ExtResource("1_urcyj")
 [node name="Sprite" type="Sprite2D" parent="."]
 
 [node name="Animation" type="AnimationPlayer" parent="."]
-
-[node name="AnimationTree" type="AnimationTree" parent="."]

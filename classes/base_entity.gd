@@ -11,4 +11,4 @@ func _physics_process(delta):
 func gravity_pull(delta):
 	if not grounded:
 		velocity.y = gravity * delta
-#		move_and_slide()
+

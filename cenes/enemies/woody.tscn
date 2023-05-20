@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cvb8hk3kmkfle" path="res://cenes/bullet.tscn" id="3_x7tdp"]
 
 [node name="Woody" instance=ExtResource("1_e1rg1")]
+collision_layer = 1
 script = ExtResource("2_wyhio")
 Bullet = ExtResource("3_x7tdp")
 
@@ -13,7 +14,7 @@ rotation = 0.0103545
 polygon = PackedVector2Array(-1.33172, 0.545398, 117.675, -28.5876, 122.808, 2.86447)
 
 [node name="Marker" type="Marker2D" parent="." index="6"]
-position = Vector2(14, 0)
+position = Vector2(16, -4)
 
 [node name="Timer" type="Timer" parent="." index="7"]
 wait_time = 0.5
