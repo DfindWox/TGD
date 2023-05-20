@@ -9,17 +9,54 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dg553")
+fruits = 10
 endScreen = ExtResource("2_arhqn")
 
 [node name="Player" parent="." instance=ExtResource("1_js1qi")]
-position = Vector2(105, 83)
+position = Vector2(49, 547)
 
 [node name="Map" parent="." instance=ExtResource("2_8bt1j")]
-position = Vector2(14, 254)
+position = Vector2(14, 8)
 
 [node name="Fruit" parent="." instance=ExtResource("3_1jj07")]
-position = Vector2(306, 132)
-rotation = -0.236993
+position = Vector2(494, 253)
+rotation = -0.0199072
 
 [node name="Woody" parent="." instance=ExtResource("4_rbyd6")]
-position = Vector2(209, 232)
+position = Vector2(151, 329)
+
+[node name="Woody2" parent="." instance=ExtResource("4_rbyd6")]
+position = Vector2(151, 289)
+
+[node name="Woody3" parent="." instance=ExtResource("4_rbyd6")]
+position = Vector2(33, 260)
+
+[node name="Fruit2" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(129, 434)
+
+[node name="Fruit3" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(175, 438)
+
+[node name="Fruit4" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(280, 256)
+
+[node name="Fruit5" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(330, 276)
+
+[node name="Fruit6" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(277, 286)
+
+[node name="Fruit7" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(62, 312)
+
+[node name="Fruit8" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(315, 310)
+
+[node name="Fruit9" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(651, 322)
+
+[node name="Fruit10" parent="." instance=ExtResource("3_1jj07")]
+position = Vector2(997, 465)
+
+[node name="Woody4" parent="." instance=ExtResource("4_rbyd6")]
+position = Vector2(520, 355)

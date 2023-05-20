@@ -4,21 +4,17 @@ extends "res://classes/base_entity.gd"
 @onready var animation = $Animation
 var canChangeStatus:bool = true
 var state:String = 'idle'
+
 func _physics_process(delta):
 	#change name from input to physics, maybe? send those their own functions
-	handle_input(delta)
+	#I'd organize all that if I had the time to
+	physics(delta)
 	gravity_pull(delta)
 	handle_animation()
-	if Input.is_action_just_pressed("ui_accept"):
-		print('era pra eu pular')
-		if grounded:
-			print('pulei ue')
-			state = 'jumping'
-			canChangeStatus = false
-			timer_jump.start()
+	handle_input()
 	move_and_slide()
 
-func handle_input(delta):
+func physics(delta):
 	var jumping:int
 	if state == 'jumping':
 		jumping = jump_speed * delta
@@ -50,14 +46,12 @@ func _on_tact_body_entered(body):
 		canChangeStatus = true
 		state = 'idle'
 
-
 func _on_tact_body_exited(body):
 	if body.is_in_group('Map') and canChangeStatus:
 		grounded = false
 		state = 'falling'
 
 func handle_animation():
-#	print(state)
 	animation.play(state)
 
 func handle_rotation(input_direction):
@@ -65,3 +59,10 @@ func handle_rotation(input_direction):
 		$Sprite.set_flip_h(false)
 	if  input_direction.x < 0:
 		$Sprite.set_flip_h(true)
+
+func handle_input():
+	if Input.is_action_just_pressed("ui_accept"):
+		if grounded and not state == 'jumping':
+			state = 'jumping'
+			canChangeStatus = false
+			timer_jump.start()

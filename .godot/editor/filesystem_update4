@@ -4,3 +4,8 @@ res://classes/base_entity.tscn
 res://main.tscn
 res://classes/base_entity.gd
 res://cenes/maps/map.tscn
+res://cenes/enemies/woody.tscn
+res://cenes/enemies/woody.gd
+res://cenes/bullet.tscn
+res://cenes/endScreen.gd
+res://cenes/endScreen.tscn

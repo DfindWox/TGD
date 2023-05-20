@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvb8hk3kmkfle"]
+[gd_scene load_steps=5 format=3 uid="uid://cvb8hk3kmkfle"]
 
 [ext_resource type="PackedScene" uid="uid://ceh0wgpgda8f3" path="res://classes/radar.tscn" id="1_2k5j7"]
 [ext_resource type="Script" path="res://cenes/bullet.gd" id="2_nnrwl"]
+[ext_resource type="Texture2D" uid="uid://bsuipcu02ruyp" path="res://assets/Pixel Adventure 1, 2/Enemies/Trunk/Bullet.png" id="3_kquiu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4trt3"]
 radius = 6.32456
@@ -14,5 +15,8 @@ script = ExtResource("2_nnrwl")
 
 [node name="Collision" parent="." index="0"]
 shape = SubResource("CircleShape2D_4trt3")
+
+[node name="Sprite" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_kquiu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
